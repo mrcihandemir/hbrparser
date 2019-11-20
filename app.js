@@ -1,10 +1,10 @@
 const express = require('express');
 var cheerio = require('cheerio');
 let Parser = require('rss-parser');
-var pg = require('pg');
 let parser = new Parser();
 const app = express(); 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 80 ;
+var pg = require('pg');
 
 pg.defaults.ssl = true;
 
