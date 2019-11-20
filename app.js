@@ -32,8 +32,8 @@ app.get('/', function (req, res) {
            res.send(b);
          })();
          */
-   
-   var pool = new pg.Pool({connectionString: process.env.DATABASE_URL+"?ssl=true"})
+   var conn = process.env.DATABASE_URL+"?ssl=true";
+   var pool = new pg.Pool({connectionString:conn })
    pool.connect(function(err,client,done){
         if(err){
             console.error("PG Connection Error " + err)
