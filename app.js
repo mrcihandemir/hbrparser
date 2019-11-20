@@ -36,7 +36,7 @@ app.get('/', function (req, res) {
    var pool = new pg.Pool({connectionString: process.env.DATABASE_URL+"?ssl=true"})
    pool.connect(function(err,client,done){
         if(err){
-            console.error("PG Connection Error")
+            console.error("PG Connection Error " + err)
         }
         console.log("Connected to Postgres");
           client.query("SELECT table_schema,table_name FROM information_schema.tables", function(err, result){
