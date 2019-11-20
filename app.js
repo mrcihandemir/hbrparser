@@ -33,6 +33,7 @@ app.get('/', function (req, res) {
          })();
          */
    var conn = process.env.DATABASE_URL+"?ssl=true";
+   console.log(conn);
    var pool = new pg.Pool({connectionString:conn })
    pool.connect(function(err,client,done){
         if(err){
