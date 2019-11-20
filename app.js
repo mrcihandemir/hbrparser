@@ -1,10 +1,26 @@
 const express = require('express');
 var cheerio = require('cheerio');
 let Parser = require('rss-parser');
-const { Client } = require('pg');
+var pg = require('pg');
 let parser = new Parser();
 const app = express(); 
 const port = process.env.PORT || 80
+
+pg.defaults.ssl = true;
+
+var dbString = process.env.DATABASE_URL;
+
+var sharedPgClient;
+
+pg.connect(dbString, function(err,client){
+    if(err){
+        console.error("PG Connection Error")
+    }
+    console.log("Connected to Postgres");
+    sharedPgClient = client;
+});
+
+
 
 
 app.use(express.static('/app'));
@@ -34,23 +50,17 @@ app.get('/', function (req, res) {
          })();
          */
    
-      const client = new Client({
-     connectionString: process.env.DATABASE_URL,
-        ssl: true,
-      });
-
-      client.connect();
-
-      client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-        if (err) throw err;
-         var b = '';
-        for (let row of res.rows) {
-          //console.log(JSON.stringify(row));
-          b = b + JSON.stringify(row); 
-        }
-        client.end();
-         res.send(b);
-      });
+   
+   
+    var query = "SELECT table_schema,table_name FROM information_schema.tables";
+    var result = [];
+    sharedPgClient.query(query, function(err, result){
+        console.log("Jobs Query Result Count: " + result.rows.length);
+       res.send("Jobs Query Result Count: " + result.rows.length);
+        //res.send("index.ejs", {connectResults: result.rows});
+    });
+   
+   
 });
 
 app.listen(port, function(){
