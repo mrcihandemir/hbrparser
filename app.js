@@ -12,13 +12,7 @@ var dbString = process.env.DATABASE_URL;
 
 var sharedPgClient;
 
-pg.connect(dbString, function(err,client){
-    if(err){
-        console.error("PG Connection Error")
-    }
-    console.log("Connected to Postgres");
-    sharedPgClient = client;
-});
+
 
 
 
@@ -50,7 +44,13 @@ app.get('/', function (req, res) {
          })();
          */
    
-   
+   pg.connect(dbString, function(err,client){
+        if(err){
+            console.error("PG Connection Error")
+        }
+        console.log("Connected to Postgres");
+        sharedPgClient = client;
+    });
    
     var query = "SELECT table_schema,table_name FROM information_schema.tables";
     var result = [];
