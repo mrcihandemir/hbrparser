@@ -39,9 +39,8 @@ app.get('/', function (req, res) {
             console.error("PG Connection Error")
         }
         console.log("Connected to Postgres");
-          var query = "SELECT table_schema,table_name FROM information_schema.tables";
-          var result = [];
-          client.query(query, function(err, result){
+          client.query("SELECT table_schema,table_name FROM information_schema.tables", function(err, result){
+             done();
               console.log("Jobs Query Result Count: " + result.rows.length);
              res.send("Jobs Query Result Count: " + result.rows.length);
               //res.send("index.ejs", {connectResults: result.rows});
