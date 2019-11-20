@@ -16,7 +16,15 @@ app.get('/', function (req, res) {
            var b = '';
            feed.items.forEach(item => {
              //console.log(item.title + ':' + item.link)
-             b = b + item.title + '<br>';
+             var $ = cheerio.load(item.link);
+             var img = $('meta[property="og:image"]').attr('content'); 
+             var tit = $('meta[property="og:title"]').attr('content'); 
+             var des = $('meta[property="og:description"]').attr('content'); 
+             b = b + item.link + '<br>'; 
+             b = b + ite.isoDate + '<br>';   
+             b = b + tit + '<br>';  
+             b = b + des + '<br>';   
+             b = b + img + '<br><br><br>';   
            });
            res.send(b);
          })();
