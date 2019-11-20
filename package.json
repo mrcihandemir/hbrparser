@@ -1,0 +1,23 @@
+{
+  "name": "hbrparser",
+  "version": "1.0.0",
+  "description": "hbrparser",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+   "express": "4.17.1",
+   "cheerio": "1.0.0-rc.3",
+   "rss-parser": "3.7.3"
+},
+  "keywords": [
+    "hbrparser"
+  ],
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/mrcihandemir/hbrparser"
+  },
+  "author": "mrcihandemir",
+  "license": "X"
+}
