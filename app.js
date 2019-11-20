@@ -6,16 +6,6 @@ const app = express();
 const port = process.env.PORT || 80 ;
 var pg = require('pg');
 
-pg.defaults.ssl = true;
-
-var dbString = process.env.DATABASE_URL;
-
-
-
-
-
-
-
 app.use(express.static('/app'));
 
 app.get('/', function (req, res) {
@@ -43,7 +33,7 @@ app.get('/', function (req, res) {
          })();
          */
    
-   var pool = new pg.Pool({connectionString: connectionString})
+   var pool = new pg.Pool({connectionString: process.env.DATABASE_URL, ssl:true})
    pool.connect(function(err,client,done){
         if(err){
             console.error("PG Connection Error")
