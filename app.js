@@ -9,9 +9,8 @@ const port = process.env.PORT || 80
 app.use(express.static('/app'));
 
 app.get('/', function (req, res) {
-  // res.send('Hello World');
-  res.sendfile('index.html');
-  //res.send('hell');
+   res.send('Hello World');
+  //res.sendfile('index.html');
 });
 
 app.listen(port, function(){
