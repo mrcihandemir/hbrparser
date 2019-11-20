@@ -32,7 +32,8 @@ app.get('/', function (req, res) {
            res.send(b);
          })();
          */
-   var conn = process.env.DATABASE_URL+"?ssl=false&sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+   //var conn = process.env.DATABASE_URL+"?ssl=false&sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+   var conn = process.env.DATABASE_URL+"?ssl=true&sslmode=require";
    console.log(conn);
    var pool = new pg.Pool({connectionString:conn })
    pool.connect(function(err,client,done){
