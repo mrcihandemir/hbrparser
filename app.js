@@ -42,8 +42,9 @@ app.get('/', function (req, res) {
            res.send(b);
          })();
          */
-   var pool = new pg.Pool();
-   pool.connect(dbString, function(err,client,done){
+   
+   var pool = new pg.Pool({connectionString: connectionString})
+   pool.connect(function(err,client,done){
         if(err){
             console.error("PG Connection Error")
         }
