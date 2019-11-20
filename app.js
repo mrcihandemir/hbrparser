@@ -10,7 +10,6 @@ pg.defaults.ssl = true;
 
 var dbString = process.env.DATABASE_URL;
 
-var sharedPgClient;
 
 
 
@@ -43,22 +42,25 @@ app.get('/', function (req, res) {
            res.send(b);
          })();
          */
-   
-   pg.connect(dbString, function(err,client){
+   var pool = new pg.Pool();
+   pool.connect(dbString, function(err,client,done){
         if(err){
             console.error("PG Connection Error")
         }
         console.log("Connected to Postgres");
-        sharedPgClient = client;
+          var query = "SELECT table_schema,table_name FROM information_schema.tables";
+          var result = [];
+          client.query(query, function(err, result){
+              console.log("Jobs Query Result Count: " + result.rows.length);
+             res.send("Jobs Query Result Count: " + result.rows.length);
+              //res.send("index.ejs", {connectResults: result.rows});
+          }); 
+        
     });
    
-    var query = "SELECT table_schema,table_name FROM information_schema.tables";
-    var result = [];
-    sharedPgClient.query(query, function(err, result){
-        console.log("Jobs Query Result Count: " + result.rows.length);
-       res.send("Jobs Query Result Count: " + result.rows.length);
-        //res.send("index.ejs", {connectResults: result.rows});
-    });
+   pool.end();
+   
+   
    
    
 });
