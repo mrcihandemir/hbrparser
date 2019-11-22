@@ -11,7 +11,7 @@ app.get('/hurriyet/yazarlar', function (req, res) {
          (async () => {
            let parser = new Parser({
                     customFields: {
-                      item: ['subcategory',['media:thumbnail','img']]
+                      item: ['subcategory',['media:thumbnail','img'],'enclosure']
                              
                     }
                   });       
@@ -25,6 +25,9 @@ app.get('/hurriyet/yazarlar', function (req, res) {
              b = b + item.isoDate + '<br>';   
                     b = b + item.subcategory + '<br>';   
                     b = b + item.img + '<br>';   
+                    b = b + item.enclosure.url + '<br>';   
+                    b = b + item.contentSnippet + '<br><br><br>';   
+                    
             
               
            });
