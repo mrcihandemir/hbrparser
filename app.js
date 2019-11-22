@@ -9,6 +9,12 @@ app.use(express.static('/app'));
 
 app.get('/hurriyet/yazarlar', function (req, res) {
          (async () => {
+           let parser = new Parser({
+                    customFields: {
+                      item: ['subcategory',['media:thumbnail','img']]
+                             
+                    }
+                  });       
            let feed = await parser.parseURL('http://www.hurriyet.com.tr/rss/yazarlar');
            var b = '';
            feed.items.forEach(item => {
@@ -17,11 +23,12 @@ app.get('/hurriyet/yazarlar', function (req, res) {
              //console.log(item.title + ':' + item.link)
              
              b = b + item.isoDate + '<br>';   
+                    b = b + item.subcategory + '<br>';   
+                    b = b + item.img + '<br>';   
             
               
            });
            res.send(b);
-            res.send(feed.items);
          })();
    
 });
