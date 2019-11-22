@@ -38,7 +38,8 @@ app.get('/hurriyet/yazarlar', function (req, res) {
            });
            //res.send(b);
                   res.contentType('application/json');
-                  res.send(JSON.stringify(result));
+                  //res.send(JSON.stringify(result));
+                  res.send(result);
          })();
    
 });
