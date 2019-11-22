@@ -17,7 +17,8 @@ app.get('/hurriyet/yazarlar', function (req, res) {
                   });       
            let feed = await parser.parseURL('http://www.hurriyet.com.tr/rss/yazarlar');
            var b = '';
-           var result = [];       
+           var result = [];    
+           var xx = 0 ;       
            feed.items.forEach(item => {
              b = b + item.link + '<br>';  
               
@@ -28,8 +29,11 @@ app.get('/hurriyet/yazarlar', function (req, res) {
                     b = b + item.subcategory + '<br>';     
                     b = b + item.enclosure.url + '<br>';   
                     b = b + item.contentSnippet + '<br><br><br>';   
+              if (xx < 5 ) {      
               result.push({link: item.link, title: item.subcategory + ' - ' + item.title, news: item.contentSnippet, img: item.enclosure.url  });      
-            
+              }
+                    
+                    xx = xx + 1;
               
            });
            //res.send(b);
