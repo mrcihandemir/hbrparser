@@ -30,7 +30,7 @@ app.get('/hurriyet/yazarlar', function (req, res) {
                     b = b + item.enclosure.url + '<br>';   
                     b = b + item.contentSnippet + '<br><br><br>';   
                  
-              result.push({link: item.link, title: item.subcategory + ' - ' + item.title, news: item.contentSnippet, img: item.enclosure.url  });      
+              result.push({link: item.link, title: item.subcategory + ' - ' + item.title, news: item.contentSnippet, img: item.enclosure.url, dt: item.isoDate  });      
               
               
            });
