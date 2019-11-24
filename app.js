@@ -7,6 +7,29 @@ const port = process.env.PORT || 80 ;
 
 app.use(express.static('/app'));
 
+
+
+app.get('/gen1', function (req, res) {
+         (async () => {
+           let parser = new Parser({
+                    customFields: {
+                      item: ['subcategory','enclosure']
+                             
+                    }
+                  });       
+           let feed = await parser.parseURL(req.query.url);
+           var result = [];    
+           feed.items.forEach(item => {                 
+              result.push({link: item.link, title: item.title, news: item.contentSnippet, img: item.enclosure.url, dt: item.isoDate  });      
+           });
+                  res.contentType('application/json');
+                  res.send(result);
+         })();
+   
+});
+
+
+
 app.get('/hurriyet/yazarlar', function (req, res) {
          (async () => {
            let parser = new Parser({
