@@ -7,6 +7,31 @@ const port = process.env.PORT || 80 ;
 
 app.use(express.static('/app'));
 
+
+// Hürriyet - Genel
+app.get('/gen100', function (req, res) {
+         (async () => {
+           let parser = new Parser({customFields: {item: ['category','enclosure']}});       
+           let feed = await parser.parseURL(req.query.url);
+           var result = [];    
+           feed.items.forEach(item => {                 
+              var tmpLink = item.link;
+              var vCat = 'X'; 
+              if (tmpLink.includes("/gundem/")) { vCat = 'Gündem';}      
+              if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}            
+              if (tmpLink.includes("/teknoloji/")) { vCat = 'Teknoloji';}                  
+              if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}
+              if (!(vCat=='X')) {      
+                       result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img:  item.enclosure.url, dt: item.isoDate  });      
+              }
+           });
+                  res.contentType('application/json');
+                  res.send(result);
+         })();
+   
+});
+
+
 // Sözcü
 app.get('/gen5', function (req, res) {
          (async () => {
