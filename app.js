@@ -34,6 +34,21 @@ app.get('/gen5', function (req, res) {
 });
 
 
+// Resimsiz , Kategorisiz
+app.get('/gen10', function (req, res) {
+         (async () => {
+           let parser = new Parser();       
+           let feed = await parser.parseURL(req.query.url);
+           var result = [];    
+           feed.items.forEach(item => {                     
+              result.push({link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
+           });
+                  res.contentType('application/json');
+                  res.send(result);
+         })();
+   
+});
+
 
 app.get('/gen1', function (req, res) {
          (async () => {
