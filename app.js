@@ -56,10 +56,8 @@ app.get('/gen110', function (req, res) {
 });
 
 
-
-
 // BBC
-app.get('/gen6', function (req, res) {
+app.get('/gen120', function (req, res) {
          (async () => {
            let parser = new Parser();       
            let feed = await parser.parseURL(req.query.url);
