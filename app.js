@@ -54,10 +54,11 @@ app.get('/gen31', function (req, res) {
            let feed = await parser.parseURL(req.query.url);
            var result = [];    
            feed.items.forEach(item => {
-              
-              if (item.category !== 'Ekonomi') {      
+              if (item.category !== "Ekonomi") {      
               result.push({link: item.link, title: item.title, news: item.contentSnippet, img: item.enclosure.url, dt: item.isoDate  });
-              }      
+              }
+                    
+             
                     
                     
            });
