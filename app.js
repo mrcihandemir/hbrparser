@@ -24,8 +24,10 @@ app.get('/gen5', function (req, res) {
               if (tmpLink.includes("/gundem/")) { vCat = 'Gündem';}      
               if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}            
               if (tmpLink.includes("/egitim/")) { vCat = 'Gündem';}                  
-              if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}                        
-              result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
+              if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}   
+              var $ = cheerio.load(item.link);
+              var imgx = $('meta[property="og:image"]').attr('content');       
+              result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: imgx, dt: item.isoDate  });      
            });
                   res.contentType('application/json');
                   res.send(result);
