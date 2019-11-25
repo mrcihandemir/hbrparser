@@ -34,6 +34,26 @@ app.get('/gen5', function (req, res) {
 });
 
 
+// BBC
+app.get('/gen6', function (req, res) {
+         (async () => {
+           let parser = new Parser();       
+           let feed = await parser.parseURL(req.query.url);
+           var result = [];    
+           feed.items.forEach(item => {                 
+              var tmpLink = item.link;
+              var vCat = 'X'; 
+              if (tmpLink.includes("/turkce/haberler-dunya-")) { vCat = 'Dünya';}      
+              if (tmpLink.includes("/turkce/haberler-turkiye-")) { vCat = 'Gündem';}              
+              result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
+           });
+                  res.contentType('application/json');
+                  res.send(result);
+         })();
+   
+});
+
+
 // Resimsiz , Kategorisiz
 app.get('/gen10', function (req, res) {
          (async () => {
