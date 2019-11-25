@@ -43,55 +43,6 @@ app.get('/gen2', function (req, res) {
    
 });
 
-// Sputnik için
-app.get('/gen31', function (req, res) {
-         (async () => {
-           let parser = new Parser({
-                    customFields: {
-                      item: ['category','enclosure']      
-                    }
-                  });       
-           let feed = await parser.parseURL(req.query.url);
-           var result = [];    
-           feed.items.forEach(item => {
-              if (item.category !== "Ekonomi") {      
-              result.push({link: item.link, title: item.title, news: item.contentSnippet, img: item.enclosure.url, dt: item.isoDate  });
-              }
-                    
-             
-                    
-                    
-           });
-                  res.contentType('application/json');
-                  res.send(result);
-         })();
-   
-});
-
-
-app.get('/gen32', function (req, res) {
-         (async () => {
-           let parser = new Parser({
-                    customFields: {
-                      item: ['category','enclosure']      
-                    }
-                  });       
-           let feed = await parser.parseURL(req.query.url);
-           var result = [];    
-           feed.items.forEach(item => {
-              if (item.category == 'Ekonomi') {      
-              result.push({link: item.link, title: item.title, news: item.contentSnippet, img: item.enclosure.url, dt: item.isoDate  });
-              }
-                    
-             
-                    
-                    
-           });
-                  res.contentType('application/json');
-                  res.send(result);
-         })();
-   
-});
 
 
 app.get('/hurriyet/yazarlar', function (req, res) {
