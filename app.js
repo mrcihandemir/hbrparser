@@ -66,8 +66,10 @@ app.get('/gen120', function (req, res) {
               var tmpLink = item.link;
               var vCat = 'X'; 
               if (tmpLink.includes("/turkce/haberler-dunya-")) { vCat = 'Dünya';}      
-              if (tmpLink.includes("/turkce/haberler-turkiye-")) { vCat = 'Gündem';}              
-              result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
+              if (tmpLink.includes("/turkce/haberler-turkiye-")) { vCat = 'Gündem';}
+              if (!(vCat=='X')) {          
+                  result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
+              }         
            });
                   res.contentType('application/json');
                   res.send(result);
