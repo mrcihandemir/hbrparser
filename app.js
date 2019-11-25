@@ -58,7 +58,7 @@ app.get('/gen3', function (req, res) {
               result.push({link: item.link, title: item.title, news: item.contentSnippet, img: item.enclosure.url, dt: item.isoDate  });
               }
                     
-              if (item.category <> 'Ekonomi' && req.query.cat == 'Hepsi') {      
+              if (item.category <> 'Ekonomi' && req.query.cat == 'Gündem') {      
               result.push({link: item.link, title: item.title, news: item.contentSnippet, img: item.enclosure.url, dt: item.isoDate  });
               }      
                     
