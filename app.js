@@ -18,6 +18,7 @@ app.get('/fb', function(req, res) {
     var fb = 0;
     var x = 0;
     var fbLink = '';
+    var ret = '';
     inc.forEach(function(item) {
         x++;
         if ((x%3)==1) {L1=item;} 
@@ -40,9 +41,10 @@ app.get('/fb', function(req, res) {
     fbLink = 'https://graph.facebook.com/?ids=' + fbLink + '&fields=og_object{engagement}';
     request.get(fbLink, function(err, response, body) {
             console.log(body);
+            ret = JSON.parse(body);
         });
     
-    res.send('hellö');
+    res.send(ret);
 });
 
 
