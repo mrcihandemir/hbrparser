@@ -9,7 +9,8 @@
   "dependencies": {
    "express": "4.17.1",
    "cheerio": "1.0.0-rc.3",
-   "rss-parser": "3.7.3" 
+   "rss-parser": "3.7.3",
+   "request": "2.88.0" 
 },
   "keywords": [
     "hbrparser"
