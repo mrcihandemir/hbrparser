@@ -18,9 +18,10 @@ app.get('/gen100', function (req, res) {
               var tmpLink = item.link;
               var vCat = 'X'; 
               if (tmpLink.includes("/gundem/")) { vCat = 'Gündem';}      
-              if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}            
-              if (tmpLink.includes("/teknoloji/")) { vCat = 'Teknoloji';}                  
-              if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}            
+              else if (tmpLink.includes("/teknoloji/")) { vCat = 'Teknoloji';}                  
+              else if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}
+              else { vCat = 'X';}
               if (!(vCat=='X')) {      
                        result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img:  item.enclosure.url, dt: item.isoDate  });      
               }
@@ -42,9 +43,10 @@ app.get('/gen110', function (req, res) {
               var tmpLink = item.link;
               var vCat = 'X'; 
               if (tmpLink.includes("/gundem/")) { vCat = 'Gündem';}      
-              if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}            
-              if (tmpLink.includes("/teknoloji/")) { vCat = 'Teknoloji';}                  
-              if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}            
+              else if (tmpLink.includes("/teknoloji/")) { vCat = 'Teknoloji';}                  
+              else if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}
+              else { vCat = 'X';}      
               if (!(vCat=='X')) {      
                        result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
               }
@@ -66,7 +68,8 @@ app.get('/gen120', function (req, res) {
               var tmpLink = item.link;
               var vCat = 'X'; 
               if (tmpLink.includes("/turkce/haberler-dunya-")) { vCat = 'Dünya';}      
-              if (tmpLink.includes("/turkce/haberler-turkiye-")) { vCat = 'Gündem';}
+              else if (tmpLink.includes("/turkce/haberler-turkiye-")) { vCat = 'Gündem';}
+              else { vCat = 'X';}
               if (!(vCat=='X')) {          
                   result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
               }         
