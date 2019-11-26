@@ -36,6 +36,7 @@ app.get('/fb', function(req, res) {
     });
     console.log(req.query);
     console.log(Object.keys(req.query).length);
+    fbLink = fbLink.substring(0, fbLink.length - 1);
     fbLink = 'https://graph.facebook.com/?ids=' + fbLink + '&fields=og_object{engagement}';
     request.get(fbLink, function(err, response, body) {
             console.log(body);
