@@ -38,10 +38,10 @@ app.get('/fb', function(req, res) {
     console.log(Object.keys(req.query).length);
     fbLink = 'https://graph.facebook.com/?ids=' + fbLink + '&fields=og_object{engagement}';
     request.get(fbLink, function(err, response, body) {
-            res.send(response);
+            console.log(response);
         });
     
-   // res.send('hellö');
+    res.send('hellö');
 });
 
 
