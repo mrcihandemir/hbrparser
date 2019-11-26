@@ -8,9 +8,22 @@ const port = process.env.PORT || 80 ;
 app.use(express.static('/app'));
 
 app.get('/fb', function(req, res) {
+    var inc = req.query;
+    var incL = Object.keys(req.query).length;
+    var arr = [];
+    var L1 = '';
+    var L2 = '';
+    var L3 = '';
+    var fb = 0;
+    inc.forEach(function(item) {
+        //if ((incL%3)==1) {L1= 
+        //arr.push(item.id);
+        console.log(item);
+    });
     console.log(req.query);
     console.log(Object.keys(req.query).length);
-    res.send(Object.keys(req.query).length);
+    
+    res.send('hellö');
 });
 
 
