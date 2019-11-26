@@ -8,7 +8,7 @@ const port = process.env.PORT || 80 ;
 app.use(express.static('/app'));
 
 app.get('/fb', function(req, res) {
-    var inc = req.query;
+    var inc = Object.keys(req.query);
     var incL = Object.keys(req.query).length;
     var arr = [];
     var L1 = '';
