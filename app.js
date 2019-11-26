@@ -10,7 +10,7 @@ app.use(express.static('/app'));
 app.get('/fb', function(req, res) {
     console.log(req.query);
     console.log(Object.keys(req.query).length);
-    res.send(result);
+    res.send(Object.keys(req.query).length);
 });
 
 
