@@ -11,14 +11,25 @@ app.get('/fb', function(req, res) {
     var inc = Object.values(req.query);
     var incL = Object.keys(req.query).length;
     var arr = [];
-    var L1 = '';
-    var L2 = '';
-    var L3 = '';
+    var L1 = ''; // key 1
+    var L2 = ''; // key 2 link 
+    var L3 = ''; // epoch
     var fb = 0;
+    var x = 0;
     inc.forEach(function(item) {
-        //if ((incL%3)==1) {L1= 
+        x++;
+        if ((x%3)==1) {L1=item;} 
+        if ((x%3)==2) {L2=item;} 
+        if ((x%3)==0) {L3=item;} 
+        if ((x%3)==0) {
+            var valueToPush = new Array();
+            valueToPush[0] = L1;
+            valueToPush[1] = L2;
+            valueToPush[2] = L3;
+            arr.push(valueToPush);
+        } 
         //arr.push(item.id);
-        console.log(item);
+        console.log(arr);
     });
     console.log(req.query);
     console.log(Object.keys(req.query).length);
