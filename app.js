@@ -1,5 +1,6 @@
 const express = require('express');
 var cheerio = require('cheerio');
+var request = require('request');
 let Parser = require('rss-parser');
 let parser = new Parser();
 const app = express(); 
@@ -16,6 +17,7 @@ app.get('/fb', function(req, res) {
     var L3 = ''; // epoch
     var fb = 0;
     var x = 0;
+    var fbLink = '';
     inc.forEach(function(item) {
         x++;
         if ((x%3)==1) {L1=item;} 
@@ -27,14 +29,19 @@ app.get('/fb', function(req, res) {
             valueToPush[1] = L2;
             valueToPush[2] = L3;
             arr.push(valueToPush);
+            fbLink = fbLink + L2 + ',' ;
         } 
         //arr.push(item.id);
         console.log(arr);
     });
     console.log(req.query);
     console.log(Object.keys(req.query).length);
+    fbLink = 'https://graph.facebook.com/?ids=' + fbLink + '&fields=og_object{engagement}';
+    request.get(fbLink, function(err, response, body) {
+            res.send(response);
+        });
     
-    res.send('hellö');
+   // res.send('hellö');
 });
 
 
