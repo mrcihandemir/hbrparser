@@ -42,9 +42,10 @@ app.get('/fb', function(req, res) {
     request.get(fbLink, function(err, response, body) {
             console.log(body);
             ret = JSON.stringify(body);
+        res.send(ret);
         });
     
-    res.send(ret);
+    
 });
 
 
