@@ -7,6 +7,12 @@ const port = process.env.PORT || 80 ;
 
 app.use(express.static('/app'));
 
+app.get('/fb', function(req, res) {
+    console.log(req.query);
+    console.log(Object.keys(req.query).length);
+    res.send(result);
+});
+
 
 // Hürriyet - Genel
 app.get('/gen100', function (req, res) {
