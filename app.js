@@ -50,9 +50,11 @@ app.get('/fb', function(req, res) {
                    var ret12 = new Array(); 
                    var r2 = Object.values(r1[i]) ;
                    ret12[0] = r2[1];
+                   console.log(ret12[0]); 
                    var r3 = Object.values(r2[0]) ; 
                    var r4 = Object.values(r3[0]) ; 
-                   ret12[1] = r4[0]; 
+                   ret12[1] = r4[0];
+                   console.log(ret12[1]);
                    retArr.push(ret12); 
                 }
             console.log(retArr);
