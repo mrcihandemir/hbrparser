@@ -33,7 +33,7 @@ app.get('/fb', function(req, res) {
             fbLink = fbLink + L2 + ',' ;
         } 
         //arr.push(item.id);
-        console.log(arr);
+        //console.log(arr);
     });
     //console.log(req.query);
     //console.log(Object.keys(req.query).length);
