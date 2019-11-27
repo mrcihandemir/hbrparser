@@ -41,23 +41,23 @@ app.get('/fb', function(req, res) {
     fbLink = 'https://graph.facebook.com/?ids=' + fbLink + '&fields=og_object{engagement}';
     request.get(fbLink, function(err, response, body) {
             //console.log(JSON.stringify(body));
-            console.log(body);
-            //ret = JSON.stringify(body);
-            ret = body;
+            console.log(JSON.stringify(body));
+            ret = JSON.stringify(body);
+            //ret = body;
             var retArr = [];
             var r1 = Object.values(ret);
                 for (i=0;i<r1.length;i++) {
                    var ret12 = new Array(); 
                    var r2 = Object.values(r1[i]) ;
                    ret12[0] = r2[1];
-                   console.log(ret12[0]); 
+                   //console.log(ret12[0]); 
                    var r3 = Object.values(r2[0]) ; 
                    var r4 = Object.values(r3[0]) ; 
                    ret12[1] = r4[0];
                    console.log(ret12[1]);
                    retArr.push(ret12); 
                 }
-            console.log(retArr);
+            //console.log(retArr);
             res.send(ret);
         });
     
