@@ -26,12 +26,12 @@ app.get('/fb', function(req, res) {
         if ((x%3)==0) {L3=item;} 
         if ((x%3)==0) {
             var valueToPush = new Array();
-            valueToPush[0] = L1;
-            valueToPush[1] = L2;
+            valueToPush[0] = L2;
+            valueToPush[1] = L1;
             valueToPush[2] = L3;
             valueToPush[3] = 0;
             arr.push(valueToPush);
-            fbLink = fbLink + L2 + ',' ;
+            fbLink = fbLink + L1 + ',' ;
         } 
         //arr.push(item.id);
         //console.log(arr);
