@@ -41,7 +41,8 @@ app.get('/fb', function(req, res) {
     fbLink = 'https://graph.facebook.com/?ids=' + fbLink + '&fields=og_object{engagement}';
     request.get(fbLink, function(err, response, body) {
             console.log(JSON.stringify(body));
-            ret = JSON.stringify(body);
+            //ret = JSON.stringify(body);
+            ret = body;
             var retArr = [];
             var r1 = Object.values(ret);
                 for (i=0;i<r1.length;i++) {
