@@ -42,7 +42,19 @@ app.get('/fb', function(req, res) {
     request.get(fbLink, function(err, response, body) {
             console.log(body);
             ret = JSON.stringify(body);
-        res.send(ret);
+            var retArr = [];
+            var ret12 = new Array();
+            var r1 = Object.values(ret);
+                for (i=0;i<r1.length;i++) {
+                   var r2 = Object.values(r1[0]) ;
+                   ret12[0] = r1[1];
+                   var r3 = Object.values(r2[0]) ; 
+                   var r4 = Object.values(r3[0]) ; 
+                   ret12[1] = r4; 
+                   retArr.push(ret12);
+                }
+            console.log(retArr);
+            res.send(ret);
         });
     
     
