@@ -47,7 +47,7 @@ app.get('/fb', function(req, res) {
             var r1 = Object.values(ret);
                 for (i=0;i<r1.length;i++) {
                    var r2 = Object.values(r1[0]) ;
-                   ret12[0] = r1[1];
+                   ret12[0] = r2[1];
                    var r3 = Object.values(r2[0]) ; 
                    var r4 = Object.values(r3[0]) ; 
                    ret12[1] = r4; 
