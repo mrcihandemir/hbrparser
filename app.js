@@ -37,6 +37,10 @@ app.get('/fb', function(req, res) {
         } 
         */
         fbLink = fbLink + item + ',' ;
+        var valueToPush = new Array();
+            valueToPush[0] = item;
+            valueToPush[1] = 0;
+            arr.push(valueToPush);
         
         //arr.push(item.id);
         //console.log(arr);
@@ -63,7 +67,7 @@ app.get('/fb', function(req, res) {
             for (i=0;i<arr.length;i++) {
               for(j=0;j<retArr.length;j++) {
                 if (arr[i][0] == retArr[j][0]) {
-                  arr[i][3] = retArr[j][1];
+                  arr[i][1] = retArr[j][1];
                 }
               }
             }
