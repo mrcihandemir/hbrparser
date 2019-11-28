@@ -32,9 +32,12 @@ app.get('/fb', function(req, res) {
             valueToPush[2] = L3;
             valueToPush[3] = 0;
             arr.push(valueToPush);
-            */
+            
             fbLink = fbLink + item + ',' ;
         } 
+        */
+        fbLink = fbLink + item + ',' ;
+        
         //arr.push(item.id);
         //console.log(arr);
     });
