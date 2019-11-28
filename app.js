@@ -153,6 +153,41 @@ app.get('/gen120', function (req, res) {
 });
 
 
+
+// Sputnik
+app.get('/gen120', function (req, res) {
+         (async () => {
+           let parser = new Parser({customFields: {item: ['category','enclosure']}});       
+           let feed = await parser.parseURL(req.query.url);
+           var result = [];    
+           feed.items.forEach(item => {                 
+              var tmpLink = item.link;
+              var vCat = 'X'; 
+              if (tmpLink.includes("/turkiye/")) { vCat = 'Gündem';}          
+              else if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}    
+              else if (tmpLink.includes("/politika/")) { vCat = 'Gündem';}     
+              else if (tmpLink.includes("/bilim/")) { vCat = 'Teknoloji';}                  
+              else if (tmpLink.includes("/rusya/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/avrupa/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/dogu_akdeniz/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/ortadogu/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/abd/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/guney_amerika/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/asya/")) { vCat = 'Dünya';}
+              else if (tmpLink.includes("/afrika/")) { vCat = 'Dünya';}
+              else { vCat = 'X';}
+              if (!(vCat=='X')) {      
+                       result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img:  item.enclosure.url, dt: item.isoDate  });      
+              }
+           });
+                  res.contentType('application/json');
+                  res.send(result);
+         })();
+   
+});
+
+
+
 // Resimsiz , Kategorisiz
 app.get('/gen10', function (req, res) {
          (async () => {
