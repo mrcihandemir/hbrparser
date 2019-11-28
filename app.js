@@ -31,7 +31,7 @@ app.get('/fb', function(req, res) {
             valueToPush[2] = L3;
             valueToPush[3] = 0;
             arr.push(valueToPush);
-            fbLink = fbLink + L1 + ',' ;
+            fbLink = fbLink + L2 + ',' ;
         } 
         //arr.push(item.id);
         //console.log(arr);
