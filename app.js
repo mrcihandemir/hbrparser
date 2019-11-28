@@ -155,7 +155,7 @@ app.get('/gen120', function (req, res) {
 
 
 // Sputnik
-app.get('/gen120', function (req, res) {
+app.get('/gen130', function (req, res) {
          (async () => {
            let parser = new Parser({customFields: {item: ['category','enclosure']}});       
            let feed = await parser.parseURL(req.query.url);
