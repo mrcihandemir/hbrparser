@@ -63,7 +63,7 @@ app.get('/fb', function(req, res) {
               }
             }
         
-            console.log(arr);
+            console.log(retArr);
             res.send(arr);
         });
     
