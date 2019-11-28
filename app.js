@@ -59,7 +59,6 @@ app.get('/fb', function(req, res) {
               for(j=0;j<retArr.length;j++) {
                 if (arr[i][0] == retArr[j][0]) {
                   arr[i][3] = retArr[j][1];
-                  break;
                 }
               }
             }
