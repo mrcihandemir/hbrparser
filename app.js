@@ -20,6 +20,7 @@ app.get('/fb', function(req, res) {
     var fbLink = '';
     var ret = '';
     inc.forEach(function(item) {
+        /*
         x++;
         if ((x%3)==1) {L1=item;} 
         if ((x%3)==2) {L2=item;} 
@@ -31,7 +32,8 @@ app.get('/fb', function(req, res) {
             valueToPush[2] = L3;
             valueToPush[3] = 0;
             arr.push(valueToPush);
-            fbLink = fbLink + L2 + ',' ;
+            */
+            fbLink = fbLink + item + ',' ;
         } 
         //arr.push(item.id);
         //console.log(arr);
