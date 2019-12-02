@@ -188,6 +188,35 @@ app.get('/gen130', function (req, res) {
 
 
 
+// Duvar
+app.get('/gen140', function (req, res) {
+         (async () => {
+           let parser = new Parser();       
+           let feed = await parser.parseURL(req.query.url);
+           var result = [];    
+           feed.items.forEach(item => {                 
+              var tmpLink = item.link;
+              var vCat = 'X'; 
+              if (tmpLink.includes("/gundem/")) { vCat = 'Gündem';}      
+              else if (tmpLink.includes("/dunya/")) { vCat = 'Dünya';}
+               else if (tmpLink.includes("/politika/")) { vCat = 'Gündem';}
+               else if (tmpLink.includes("/ekonomi/")) { vCat = 'Ekonomi';}
+               else if (tmpLink.includes("/bilim/")) { vCat = 'Teknoloji';}
+               else if (tmpLink.includes("/teknoloji/")) { vCat = 'Teknoloji';}
+              else { vCat = 'X';}
+              if (!(vCat=='X')) {          
+                  result.push({category: vCat, link: item.link, title: item.title, news: item.contentSnippet, img: '', dt: item.isoDate  });      
+              }         
+           });
+                  res.contentType('application/json');
+                  res.send(result);
+         })();
+   
+});
+
+
+
+
 // Resimsiz , Kategorisiz
 app.get('/gen10', function (req, res) {
          (async () => {
