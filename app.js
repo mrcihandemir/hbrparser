@@ -222,10 +222,8 @@ app.get('/gal140', function (req, res) {
         sp.load(req.query.url)
         .then(function($){
             $.q("//div[@id=mydiv]/div[1]/div[1]/div/ul/li/").forEach(function(node){
-                var res = {
-                    url: node.x("./a[1]/@href")
-                }
-                console.log(res);
+                //var res = {url: node.x("./a[1]/@href")}
+                console.log(node);
             })
         })
         .fail(function(err){
