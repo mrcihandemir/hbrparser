@@ -218,7 +218,7 @@ app.get('/gen140', function (req, res) {
 // Duvar Galeri
 app.get('/gal140', function (req, res) {
     var $ = cheerio.load(req.query.url);
-    res.send($('ul.swiper-wrapper.news-gallery').html());
+    console.log($('ul.swiper-wrapper.news-gallery').html());
 });
 
 
