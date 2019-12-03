@@ -217,24 +217,8 @@ app.get('/gen140', function (req, res) {
 
 // Duvar Galeri
 app.get('/gal140', function (req, res) {
-
-        var sp = require('scrapejs').init({cc: 2, delay: 1 * 1000});
-        sp.load(req.query.url)
-        .then(function($){
-            $.q("//div[@id=mydiv]/div[1]/div[1]/div/ul/li/").forEach(function(node){
-                //var res = {url: node.x("./a[1]/@href")}
-                console.log(node);
-            })
-        })
-        .fail(function(err){
-            console.log(err);
-        })
-    
-    
-    
-    
-    
-    
+    var $ = cheerio.load(req.query.url);
+    res.send($('li[class=orange]').html());
 });
 
 
