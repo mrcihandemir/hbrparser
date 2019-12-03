@@ -215,6 +215,20 @@ app.get('/gen140', function (req, res) {
 });
 
 
+// Duvar Galeri
+app.get('/gal140', function (req, res) {
+        var $ = cheerio.load(req.query.url);
+        var result = [];  
+        for (i=0;i<21;i++) {
+            var link = $('//div[@id=mydiv]/div[1]/div[1]/div/ul/li['+i+']/a[2]').attr('href'); 
+            result.push({link: link});
+        }
+        res.contentType('application/json');
+        res.send(result);
+});
+
+
+
 
 
 // Resimsiz , Kategorisiz
