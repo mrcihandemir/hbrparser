@@ -222,8 +222,13 @@ app.get('/gal140', function (req, res) {
     request(req.query.url, function (error, response, html) {
       if (!error && response.statusCode == 200) {
         var $ = cheerio.load(html);
-        var cnt = $('meta[property="og:description"]').attr('content'); 
-        console.log(cnt);
+        $('swiper-lazy attachment-and-headline-carousel size-and-headline-carousel').each(function(i, element){
+          var img = $(this).attr('data-src');   
+          console.log(img);
+          var a = $(this).parent();  
+          a = a.attr('href');    
+          console.log(a);
+        });
       }
     });
     res.send('hellö');
