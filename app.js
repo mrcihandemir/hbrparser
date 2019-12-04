@@ -222,7 +222,9 @@ app.get('/gal140', function (req, res) {
     request(req.query.url, function (error, response, html) {
       if (!error && response.statusCode == 200) {
         var $ = cheerio.load(html);
+        console.log('c');  
         $('swiper-lazy attachment-and-headline-carousel size-and-headline-carousel').each(function(i, element){
+          console.log('f');    
           var img = $(this).attr('data-src');   
           console.log(img);
           var a = $(this).parent();  
