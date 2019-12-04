@@ -219,7 +219,7 @@ app.get('/gen140', function (req, res) {
 app.get('/gal140', function (req, res) {
     console.log(req.query.url);
     var $ = cheerio.load(req.query.url);
-    var cnt = $('meta[property="og:title"]').attr('content'); 
+    var cnt = $('meta[property="og:description"]').attr('content'); 
     console.log($('ul.swiper-wrapper.news-gallery').html());
     console.log(cnt);
     res.send('hellö');
