@@ -269,7 +269,7 @@ app.get('/gal110', function (req, res) {
         var $ = cheerio.load(html);
         $('div.swiper-slide').each(function(i, element){
           var a = $(this).children().attr('href');  
-          var img = $(this).children().child().attr('src');   
+          var img = $(this).children().children().attr('src');   
           var valueToPush = new Array();
             valueToPush[0] = a;
             valueToPush[1] = img;
