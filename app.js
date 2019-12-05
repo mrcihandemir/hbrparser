@@ -251,7 +251,7 @@ app.get('/gal100', function (req, res) {
           var a = $(this).parent();  
           a = a.attr('href');
           var valueToPush = new Array();
-            valueToPush[0] = 'http://www.hurriyet.com.tr/' + a;
+            valueToPush[0] = 'http://www.hurriyet.com.tr' + a;
             valueToPush[1] = img;
           result.push(valueToPush);      
         });
