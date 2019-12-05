@@ -240,6 +240,27 @@ app.get('/gal140', function (req, res) {
 
 
 
+// Hürriyet Galeri
+app.get('/gal100', function (req, res) {
+    var result = [];
+    request(req.query.url, function (error, response, html) {
+      if (!error && response.statusCode == 200) {
+        var $ = cheerio.load(html);
+        $('img.big-headline-slider-image.swiper-lazy').each(function(i, element){
+          var img = $(this).attr('data-src');   
+          var a = $(this).parent();  
+          a = a.attr('href');
+          var valueToPush = new Array();
+            valueToPush[0] = 'http://www.hurriyet.com.tr/' + a;
+            valueToPush[1] = img;
+          result.push(valueToPush);      
+        });
+        res.send(result);  
+      }
+    });
+});
+
+
 
 
 // Resimsiz , Kategorisiz
