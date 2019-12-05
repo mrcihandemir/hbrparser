@@ -215,6 +215,9 @@ app.get('/gen140', function (req, res) {
 });
 
 
+
+            
+
 // Duvar Galeri
 app.get('/gal140', function (req, res) {
     var result = [];
@@ -225,7 +228,10 @@ app.get('/gal140', function (req, res) {
           var img = $(this).attr('data-src');   
           var a = $(this).parent();  
           a = a.attr('href');
-          result.push({link:a, img:img});      
+          var valueToPush = new Array();
+            valueToPush[0] = a;
+            valueToPush[1] = img;
+          result.push(valueToPush);      
         });
         res.send(result);  
       }
