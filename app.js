@@ -282,6 +282,26 @@ app.get('/gal110', function (req, res) {
 
 
 
+// bbc Galeri
+app.get('/gal120', function (req, res) {
+    var result = [];
+    request(req.query.url, function (error, response, html) {
+      if (!error && response.statusCode == 200) {
+        var $ = cheerio.load(html);
+        $('div.dove-item__body').each(function(i, element){
+          var a = 'https://www.bbc.com/' + $(this).children().attr('href');  
+          var img = '';   
+          var valueToPush = new Array();
+            valueToPush[0] = a;
+            valueToPush[1] = img;
+          result.push(valueToPush);      
+        });
+        res.send(result);  
+      }
+    });
+});
+
+
 // Resimsiz , Kategorisiz
 app.get('/gen10', function (req, res) {
          (async () => {
