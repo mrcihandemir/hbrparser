@@ -230,7 +230,7 @@ app.get('/gal140', function (req, res) {
           a = a.attr('href');
           var valueToPush = new Array();
             valueToPush[0] = a;
-            valueToPush[1] = img;
+            valueToPush[1] = 'https:' + img;
           result.push(valueToPush);      
         });
         res.send(result);  
